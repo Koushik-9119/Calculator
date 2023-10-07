@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- YouTube & Website - CodingLab -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calculator </title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <form name="form">
+                <div class="display">
+                    <input type="text" name="display" />
+                </div>
+                <div class= "category-head" >
+                    <input class = "category-title active-btn" data-tab="Normal" value="Normal"  data-tab="Normal" type="button" id="books" >
+                    <input class = "category-title" data-tab="Scientific" value="Scientific" data-tab="Scientific" type="button"id="sea">
+                 </div>
+                <div id="Normal" class="b-tab active">
+                    <div class="buttons">
+                        <div>
+                            <input type="button" value="AC" onclick="display.value = '' " class="operator">
+                            <input type="button" value="DE" onclick="display.value =  display.value.toString().slice(0,-1)" class="operator">
+                            <input type="button" value="." onclick="display.value += '.' " class="operator">
+                            <input type="button" value="/" onclick="display.value += '/' " class="operator">
+
+                            <input type="button" value="7" onclick="display.value += '7' ">
+                            <input type="button" value="8" onclick="display.value += '8' ">
+                            <input type="button" value="9" onclick="display.value += '9' ">
+                            <input type="button" value="*" onclick="display.value += '*' " class="operator">
+
+                            <input type="button" value="4" onclick="display.value += '4' ">
+                            <input type="button" value="5" onclick="display.value += '5' ">
+                            <input type="button" value="6" onclick="display.value += '6' ">
+                            <input type="button" value="-" onclick="display.value += '-' " class="operator">
+
+                            <input type="button" value="1" onclick="display.value += '1' ">
+                            <input type="button" value="2" onclick="display.value += '2' ">
+                            <input type="button" value="3" onclick="display.value += '3' ">
+                            <input type="button" value="+" onclick="display.value += '+' " class="operator">
+
+                            <input type="button" value="00" onclick="display.value += '00' ">
+                            <input type="button" value="0" onclick="display.value += '0' ">
+                            <input type="button" value="=" onclick="display.value = eval(display.value)" class="equal operator">
+                        </div>
+                    </div>     
+                </div>
+                <div id="Scientific" class="b-tab">
+                    <div class="buttons">
+                        <input type="button" value="AC" onclick="display.value = '' " class="operator">
+                        <input type="button" value="DE" onclick="display.value =  display.value.toString().slice(0,-1)" class="operator">
+                        <input type="button" value="(" onclick="display.value += '(' " class="operator">
+                        <input type="button" value=")" onclick="display.value += ')' " class="operator">
+    
+                        <input value="sin" type="button" onclick="sinclicked()">
+                        <input value="sinh" type="button" onclick="sinhclicked()">
+                        <input value="√" type="button" onclick="sqrtclicked()">
+                        <input type="button" value="e" onclick="" class="operator">
+    
+                        <input value="cos" type="button" onclick="cosclicked()">
+                        <input value="cosh" type="button" onclick="coshclicked()"> 
+                        <input value="log" type="button" onclick="logclicked()">
+                        <input type="button" value="ln" onclick="" class="operator">
+    
+                        <input  value="tan" type="button" onclick="tanclicked()"> 
+                        <input  value="tanh" type="button" onclick="tanhclicked()">
+                        <input type="button" value="x²" onclick="squareclicked()">
+                        <input type="button" value="1/x" onclick="" class="operator">
+    
+                        <input value="%" type="button" onclick="">
+                        <input type="button" value="π" onclick="">
+                        <input type="button" value="=" onclick="display.value = eval(display.value)" class="equal operator">
+    
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script src="script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                $('.category-title').click(function() {
+                $(this).addClass('active-btn').siblings().removeClass('active-btn');
+            })
+        });
+        </script>
+        <script>
+            var els = document.getElementsByClassName("category-title");
+            for (var i = 0; i < els.length; i++) {
+                els[i].addEventListener("click", function (event) {
+                    changeBackground(this.id);
+                });
+            }
+            function changeBackground(id) {
+                const cls = [
+                "background-image-books",
+                "background-image-sea"
+            ];
+            document.querySelector("body").classList.remove(...cls);
+            switch (id) {
+                case "books":
+                         document.querySelector("body").classList.add("background-image-books");
+                    break;
+                    case "strawberries":
+                    case "sea":
+                         document.querySelector("body").classList.add("background-image-sea");
+                    break;
+                default:
+                 console.log("switch caught nothing");
+                break;
+            }
+        }
+        </script>
+        <script>
+            'use strict';
+            function Tabs() {
+                var bindAll = function() {
+                    var menuElements = document.querySelectorAll('[data-tab]');
+                    for(var i = 0; i < menuElements.length ; i++) {
+                    menuElements[i].addEventListener('click', change, false);
+                    }
+                }
+            
+                var clear = function() {
+                var menuElements = document.querySelectorAll('[data-tab]');
+                    for(var i = 0; i < menuElements.length ; i++) {
+                    menuElements[i].classList.remove('active');
+                    var id = menuElements[i].getAttribute('data-tab');
+                    document.getElementById(id).classList.remove('active');
+                    }
+                }
+            
+                var change = function(e) {
+                    clear();
+                    e.target.classList.add('active');
+                    var id = e.currentTarget.getAttribute('data-tab');
+                    document.getElementById(id).classList.add('active');
+                }
+            
+                bindAll();
+                }
+                var connectTabs = new Tabs();
+        </script>
+    </body>
+</html>

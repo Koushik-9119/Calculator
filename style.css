@@ -1,0 +1,101 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("BG-1.png");
+  background-size: cover;
+}
+.container {
+  position: relative; 
+  max-width: 300px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 16px 25px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+input{
+  padding: 0 5px;
+}
+
+.buttons input{
+  display: inline-block;
+  border: 1px solid #bbb;
+  margin: 4px 4px 4px ;
+  border-radius: 4px;
+  height: 50px;
+  width: 50px;
+  font-size: 18px;
+  text-align: center;
+  padding: 4px;
+  cursor: pointer;
+  background-color: #eee;
+  transition: border-color .2s ease-in-out, background-color .2s, box-shadow .2s;
+}
+
+.operator {
+  color: #2f9fff;
+}
+
+.display input{
+  text-align: right;
+border: 1px solid #bbb;
+display: flex;
+justify-content: flex-end;
+border-radius: 6px;
+margin: 15px 2px;
+width: 242px;
+height: 70px;
+flex: 1;
+font-size: 20px;
+}
+
+.category-title{
+justify-content:center;
+background: #fff;
+padding: 8px;
+border-radius: 6px;
+color: hsl(214, 78%, 55%);
+border: none;
+font-size: 18px;
+cursor: pointer;
+background-color: #eee;
+}
+.active-btn{
+background: #FF6666;
+}
+
+.category-head{
+
+margin: 8px 0;
+}
+
+.b-tab.active {
+display: block;
+}
+
+.b-tab {
+display: none;
+}
+
+.background-image-books {
+  background-image: url("BG-1.png");
+  background-size: cover;
+}
+.background-image-sea {
+  background-image: url("BG_2.png");
+  background-size: cover;
+}
+
+input.equal{
+  width: 112px;
+}
